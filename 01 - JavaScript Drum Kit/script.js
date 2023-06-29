@@ -1,31 +1,17 @@
-// All buttons 
-const keyCode = [
-    "KeyA",
-    "KeyS",
-    "KeyD",
-    "KeyF",
-    "KeyG",
-    "KeyH",
-    "KeyJ",
-    "KeyK",
-    "KeyL"
-]
-const keys = {}
-document.querySelectorAll(".key").forEach((key, i) => keys[keyCode[i]] = key )
-
-const sounds = {}
-document.querySelectorAll("audio").forEach((sound, i) => sounds[keyCode[i]] = sound )
-
 window.addEventListener("keydown", event => {
     console.log(event.code)
-    keyPress(keys[event.code])
-    playSound(sounds[event.code])
+    const key = document.querySelector(`div[data-key=${event.code}`)
+    keyPress(key)
+    const sound = document.querySelector(`audio[data-key=${event.code}`)
+    playSound(sound)
 })
 
 window.addEventListener("keyup", event => {
     console.log(event.code)
-    pauseSound(sounds[event.code])
-    keyRelease(keys[event.code])
+    const key = document.querySelector(`div[data-key=${event.code}`)
+    keyRelease(key)
+    const sound = document.querySelector(`audio[data-key=${event.code}`)
+    pauseSound(sound)
 })
 
 function keyPress(keyObject) {
