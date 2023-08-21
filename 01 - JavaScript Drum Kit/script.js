@@ -11,7 +11,7 @@ window.addEventListener("keyup", event => {
     const key = document.querySelector(`div[data-key=${event.code}`)
     keyRelease(key)
     const sound = document.querySelector(`audio[data-key=${event.code}`)
-    pauseSound(sound)
+    //pauseSound(sound)
 })
 
 function keyPress(keyObject) {
@@ -23,10 +23,10 @@ function keyRelease(keyObject) {
 }
 
 function playSound(soundObject) {
+    soundObject.currentTime = 0
     soundObject.play()
 }
 
 function pauseSound(soundObject) {
-    soundObject.currentTime = 0
     soundObject.pause()
 }
